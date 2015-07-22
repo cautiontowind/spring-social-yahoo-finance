@@ -1,0 +1,3 @@
+org/springframework/social/yahoo/JsonNodeTester.class
+org/springframework/social/yahoo/YahooTester.class
+org/springframework/social/yahoo/oauth1/CustomOAuth1TemplateTest.class
