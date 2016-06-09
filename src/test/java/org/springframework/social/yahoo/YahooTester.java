@@ -13,8 +13,9 @@ public class YahooTester {
 
     public static void main(String[] args) {
 
-        String key = "dj0yJmk9MVhtYVZMZXhNS0dkJmQ9WVdrOWRUWmhkakJITXpBbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Yg--";
-        String secret ="054e0b254fa06eae070af2c79d6d9feeae0e1988";
+        String key = "dj0yJmk9ejcwMTU2TkhSYmp4JmQ9WVdrOWJVOUxjRnBMTkhNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1kYw--";
+
+        String secret ="3252e33b311be16db9cecacb19e101e93330ce0b";
        YahooTemplate template = new YahooTemplate(key,secret);
         try {
             Ticker ticker = template.tickerOperations().ticker(TickerName.LSE_LONDON_STOCK_EXCHANGE_GROUP_PLC);

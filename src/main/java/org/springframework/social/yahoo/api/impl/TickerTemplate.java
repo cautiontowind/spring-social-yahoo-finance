@@ -39,7 +39,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
 
         request.set("format","json");
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + tickerName.getSymbol() + ")", "UTF-8");
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
 
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
 

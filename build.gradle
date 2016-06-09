@@ -23,7 +23,7 @@ dependencies {
     compile("org.springframework:spring-context:$springContextVersion") {
         exclude(module: 'commons-logging')
     }
-    compile "org.springframework.social:spring-social-core:$springSocialCoreversion"
+    compile "org.springframework.social:spring-social-core:$springSocialCoreVersion"
     compile "org.springframework.social:spring-social-web:$springSocialWebVersion"
     compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapperAslVersion"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4:$jacksonDatatypeHibernate4Version"
@@ -53,7 +53,7 @@ dependencies {
         exclude group: "org.slf4j", module: "slf4j-api"
     }
 
-    testCompile "org.springframework:spring-test:springTestVersion"
+    testCompile "org.springframework:spring-test:$springCoreVersion"
     testCompile "junit:junit:$junitVersion"
     /* This dependency was originally in the Maven provided scope, but the project was not of type war.
        This behavior is not yet supported by Gradle, so this dependency has been converted to a compile dependency.
