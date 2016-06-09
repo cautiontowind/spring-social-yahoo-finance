@@ -9,6 +9,9 @@ package org.springframework.social.yahoo.ticker;
  */
 
 public enum TickerName {
+    FTSE100_INDEX("^FTSE"),
+    DAX_INDEX("^GDAXI"),
+    CAC40_INDEX("^FCHI"),
     LSE_LANCASHIRE_HOLDINGS_LIMITED("LRE.L"),
     LSE_TARSUS_GROUP_PLC("TRS.L"),
     LSE_PHORM_CORPORATION_LIMITED("PHRM.L"),
