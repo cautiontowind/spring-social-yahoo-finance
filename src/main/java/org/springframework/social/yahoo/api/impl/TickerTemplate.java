@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.yahoo.api.TickerOperations;
-import org.springframework.social.yahoo.ticker.TickerName;
 import org.springframework.social.yahoo.ticker.Ticker;
+import org.springframework.social.yahoo.ticker.TickerName;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TickerTemplate extends AbstractYahooOperations implements TickerOperations {
 
@@ -63,8 +64,8 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         for (TickerName symbol : tickerNames) {
             merge.add(symbol.getSymbol());
         }
-
-        String allSymbols = String.join(",", merge);
+        //Add quotes to each element and join
+        String allSymbols = merge.stream().map((sym) -> "\"" + sym + "\"").collect(Collectors.joining(", "));
 
         String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + allSymbols + ")", "UTF-8");
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
