@@ -18,7 +18,6 @@ org/springframework/social/oauth1/YahooSigningSupport.class
 org/springframework/social/yahoo/ticker/ForexName.class
 org/springframework/social/oauth1/YahooSigningSupport$DefaultTimestampGenerator.class
 org/springframework/social/yahoo/security/YahooAuthenticationService.class
-org/springframework/social/yahoo/ticker/FutureSymbol.class
 org/springframework/social/connect/web/CustomReconnectFilter.class
 org/springframework/social/yahoo/api/TickerOperations.class
 org/springframework/social/yahoo/config/xml/YahooNamespaceHandler.class

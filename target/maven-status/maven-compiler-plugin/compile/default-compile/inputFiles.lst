@@ -11,7 +11,6 @@
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/connect/YahooConnectionFactory.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/connect/YahooServiceProvider.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java
-/Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/ticker/FutureSymbol.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/config/support/YahooApiHelper.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/YahooObject.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/YahooObjectMixin.java

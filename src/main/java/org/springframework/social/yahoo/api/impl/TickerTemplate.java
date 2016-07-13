@@ -40,8 +40,13 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
 
         request.set("format","json");
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
 
+        String yqlQuery = null;
+        if(tickerName.getSymbol().startsWith("^")) {
+            yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
+        } else {
+            yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + ".L\")", "UTF-8");
+        }
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
 
 
@@ -62,7 +67,11 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         List<String> merge = new ArrayList<String>();
 
         for (TickerName symbol : tickerNames) {
-            merge.add(symbol.getSymbol());
+            if(symbol.getSymbol().startsWith("^")){
+                merge.add(symbol.getSymbol());
+            }else {
+                merge.add(symbol.getSymbol() + ".L");
+            }
         }
         //Add quotes to each element and join
         String allSymbols = merge.stream().map((sym) -> "\"" + sym + "\"").collect(Collectors.joining(", "));
