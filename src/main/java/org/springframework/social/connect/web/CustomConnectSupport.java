@@ -15,30 +15,13 @@
  */
 package org.springframework.social.connect.web;
 
-import static java.util.Arrays.asList;
-
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.Map.Entry;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionFactory;
 import org.springframework.social.connect.support.OAuth1ConnectionFactory;
 import org.springframework.social.connect.support.OAuth2ConnectionFactory;
-import org.springframework.social.connect.web.ConnectSupport;
-import org.springframework.social.connect.web.HttpSessionSessionStrategy;
-import org.springframework.social.connect.web.SessionStrategy;
-import org.springframework.social.oauth1.AuthorizedRequestToken;
-import org.springframework.social.oauth1.YahooOAuth1Template;
-import org.springframework.social.oauth1.OAuth1Operations;
-import org.springframework.social.oauth1.OAuth1Parameters;
-import org.springframework.social.oauth1.OAuth1Version;
-import org.springframework.social.oauth1.OAuthToken;
+import org.springframework.social.oauth1.*;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.social.yahoo.connect.YahooConnectionFactory;
@@ -47,9 +30,15 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
-public class YahooConnectSupport extends ConnectSupport {
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map.Entry;
+
+import static java.util.Arrays.asList;
+
+public class CustomConnectSupport extends ConnectSupport {
 	
-	private final static Logger logger = LoggerFactory.getLogger(YahooConnectSupport.class);
+	private final static Logger logger = LoggerFactory.getLogger(CustomConnectSupport.class);
 
 	private boolean useAuthenticateUrl;
 
@@ -59,11 +48,11 @@ public class YahooConnectSupport extends ConnectSupport {
 	
 	private SessionStrategy sessionStrategy;
 	
-	public YahooConnectSupport() {
+	public CustomConnectSupport() {
 		this(new HttpSessionSessionStrategy());
 	}
 	
-	public YahooConnectSupport(SessionStrategy sessionStrategy) {
+	public CustomConnectSupport(SessionStrategy sessionStrategy) {
 		super(sessionStrategy);
 		this.sessionStrategy = sessionStrategy;
 	}
@@ -88,7 +77,7 @@ public class YahooConnectSupport extends ConnectSupport {
 		AuthorizedRequestToken requestToken = new AuthorizedRequestToken(extractCachedRequestToken(request), verifier);
 		
 		if(connectionFactory instanceof YahooConnectionFactory){
-			YahooOAuth1Template customOAuth1Template = (YahooOAuth1Template) connectionFactory.getOAuthOperations();
+			CustomOAuth1Template customOAuth1Template = (CustomOAuth1Template) connectionFactory.getOAuthOperations();
 			
 			MultiValueMap<String, String> response = customOAuth1Template.exchangeForYahooAccessToken(requestToken, null);
 			YahooConnectionFactory yahooConnectionFactory = (YahooConnectionFactory) connectionFactory;

@@ -21,12 +21,12 @@ public class YahooApiHelper implements ApiHelper<Yahoo> {
 
     public Yahoo getApi() {
         if (logger.isDebugEnabled()) {
-            logger.debug("Getting API binding instance for Twitter");
+            logger.debug("Getting API binding instance for Yahoo");
         }
 
         Connection<Yahoo> connection = usersConnectionRepository.createConnectionRepository(userIdSource.getUserId()).findPrimaryConnection(Yahoo.class);
         if (logger.isDebugEnabled() && connection == null) {
-            logger.debug("No current connection; Returning default TwitterTemplate instance.");
+            logger.debug("No current connection; Returning default YahooTemplate instance.");
         }
         return connection != null ? connection.getApi() : null;
     }

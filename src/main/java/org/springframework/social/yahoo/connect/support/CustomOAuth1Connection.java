@@ -17,26 +17,17 @@ package org.springframework.social.yahoo.connect.support;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.UserIdSource;
 import org.springframework.social.connect.ApiAdapter;
-import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionData;
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.support.AbstractConnection;
-import org.springframework.social.connect.support.OAuth1ConnectionFactory;
-import org.springframework.social.oauth1.YahooOAuth1Template;
-import org.springframework.social.oauth1.YahooSigningSupport;
 import org.springframework.social.oauth1.OAuth1ServiceProvider;
-import org.springframework.social.yahoo.api.Yahoo;
-import org.springframework.util.Assert;
+import org.springframework.social.oauth1.CustomOAuth1Template;
 import org.springframework.util.MultiValueMap;
 
-public class YahooOAuth1Connection<A> extends AbstractConnection<A> {
+public class CustomOAuth1Connection<A> extends AbstractConnection<A> {
 
 	private static final long serialVersionUID = -808097401993144389L;
-	Logger logger = LoggerFactory.getLogger(YahooOAuth1Connection.class);
+	Logger logger = LoggerFactory.getLogger(CustomOAuth1Connection.class);
 	private transient final OAuth1ServiceProvider<A> serviceProvider;
 	private String consumerKey;
 	private String accessToken;
@@ -48,7 +39,7 @@ public class YahooOAuth1Connection<A> extends AbstractConnection<A> {
 	private Long expireTime;
 	
 	private transient A api;
-	public YahooOAuth1Connection(String consumerKey, String providerId, String providerUserId, String accessToken, String secret, String refreshToken, Long expireTime, OAuth1ServiceProvider<A> serviceProvider, ApiAdapter<A> apiAdapter) {
+	public CustomOAuth1Connection(String consumerKey, String providerId, String providerUserId, String accessToken, String secret, String refreshToken, Long expireTime, OAuth1ServiceProvider<A> serviceProvider, ApiAdapter<A> apiAdapter) {
 		super(apiAdapter);
 		this.serviceProvider = serviceProvider;
 		initAccessTokens(accessToken, secret, refreshToken, expireTime, consumerKey);
@@ -58,12 +49,14 @@ public class YahooOAuth1Connection<A> extends AbstractConnection<A> {
 	}
 
 
-	public YahooOAuth1Connection(String consumerKey,ConnectionData data, OAuth1ServiceProvider<A> serviceProvider, ApiAdapter<A> apiAdapter) {
+	public CustomOAuth1Connection(String consumerKey, ConnectionData data, OAuth1ServiceProvider<A> serviceProvider, ApiAdapter<A> apiAdapter) {
 		super(data, apiAdapter);
 		this.serviceProvider = serviceProvider;
 		initAccessTokens(data.getAccessToken(), data.getSecret(), data.getRefreshToken(), data.getExpireTime(), consumerKey);
 		initApi();
 	}
+
+
 
 	// implementing Connection
 	
@@ -88,18 +81,20 @@ public class YahooOAuth1Connection<A> extends AbstractConnection<A> {
 	public void refresh() {
 		synchronized (getMonitor()) {
 			ConnectionData data = createData();
-			String callBack = "";
-			YahooOAuth1Template customOAuth1Template = (YahooOAuth1Template) serviceProvider.getOAuthOperations();
-			MultiValueMap<String, String> response = customOAuth1Template.fetchYahooRefreshAccessToken(callBack, null, data.getSecret(), data.getAccessToken(), data.getRefreshToken());
-			
-			String accessTokenValue = response.getFirst("oauth_token");
-			String accessTokenSecret = response.getFirst("oauth_token_secret");
-			String refreshToken = response.getFirst("oauth_session_handle");
-			Long expireTime = new Long(response.getFirst("oauth_expires_in"));
-			
-			initAccessTokens(accessTokenValue, accessTokenSecret, refreshToken, expireTime, consumerKey);
-			
-			initApi();
+			//if(data.getProviderId().equals("yahoo")) {
+				String callBack = "";
+				CustomOAuth1Template customOAuth1Template = (CustomOAuth1Template) serviceProvider.getOAuthOperations();
+				MultiValueMap<String, String> response = customOAuth1Template.fetchYahooRefreshAccessToken(callBack, null, data.getSecret(), data.getAccessToken(), data.getRefreshToken());
+
+				String accessTokenValue = response.getFirst("oauth_token");
+				String accessTokenSecret = response.getFirst("oauth_token_secret");
+				String refreshToken = response.getFirst("oauth_session_handle");
+				Long expireTime = new Long(response.getFirst("oauth_expires_in"));
+
+				initAccessTokens(accessTokenValue, accessTokenSecret, refreshToken, expireTime, consumerKey);
+
+				initApi();
+			//}
 		}
 	}
 	
@@ -133,7 +128,7 @@ public class YahooOAuth1Connection<A> extends AbstractConnection<A> {
 		if (!super.equals(obj)) return false;
 		if (getClass() != obj.getClass()) return false;
 		@SuppressWarnings("rawtypes")
-		YahooOAuth1Connection other = (YahooOAuth1Connection) obj;
+		CustomOAuth1Connection other = (CustomOAuth1Connection) obj;
 		
 		if (accessToken == null) {
 			if (other.accessToken != null) return false;

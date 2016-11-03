@@ -52,6 +52,7 @@ dependencies {
         exclude group: "com.sun.jmx", module: "jmxri"
         exclude group: "org.slf4j", module: "slf4j-api"
     }
+    
 
     testCompile "org.springframework:spring-test:$springCoreVersion"
     testCompile "junit:junit:$junitVersion"

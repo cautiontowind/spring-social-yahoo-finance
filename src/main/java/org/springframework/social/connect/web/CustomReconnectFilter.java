@@ -1,6 +1,10 @@
 package org.springframework.social.connect.web;
 
-import java.io.IOException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.social.*;
+import org.springframework.social.connect.UsersConnectionRepository;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,19 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.social.ApiException;
-import org.springframework.social.InsufficientPermissionException;
-import org.springframework.social.NotAuthorizedException;
-import org.springframework.social.OperationNotPermittedException;
-import org.springframework.social.UserIdSource;
-import org.springframework.social.connect.ConnectionFactory;
-import org.springframework.social.connect.ConnectionRepository;
-import org.springframework.social.connect.UsersConnectionRepository;
-import org.springframework.util.Assert;
-import org.springframework.web.filter.GenericFilterBean;
+import java.io.IOException;
 public class CustomReconnectFilter  extends GenericFilterBean {
 
 	private final static Log logger = LogFactory.getLog(CustomReconnectFilter.class);
@@ -35,8 +27,6 @@ public class CustomReconnectFilter  extends GenericFilterBean {
 	//Most code borrowed from Spring Social's ReconnectFilter. Modified to check for yahoo service provider, which
 	//implements a custom oauth 1a with refresh token.  
 	public CustomReconnectFilter(UsersConnectionRepository usersConnectionRepository, UserIdSource userIdSource) {
-		Assert.notNull(usersConnectionRepository, "UsersConnectionRepository cannot be null");
-		Assert.notNull(userIdSource, "UserIdSource cannot be null");
 		this.usersConnectionRepository = usersConnectionRepository;
 		this.userIdSource = userIdSource;
 	}

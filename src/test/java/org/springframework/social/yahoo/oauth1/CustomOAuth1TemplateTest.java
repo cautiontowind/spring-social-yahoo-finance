@@ -1,30 +1,22 @@
 package org.springframework.social.yahoo.oauth1;
 
-import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.social.oauth1.AuthorizedRequestToken;
-import org.springframework.social.oauth1.YahooOAuth1Template;
-import org.springframework.social.oauth1.OAuth1Template;
-import org.springframework.social.oauth1.OAuth1Version;
+import org.springframework.social.oauth1.CustomOAuth1Template;
 import org.springframework.social.oauth1.OAuthToken;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.RequestMatcher;
 import org.springframework.util.MultiValueMap;
+
+import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 public class CustomOAuth1TemplateTest {
 	private static final String ACCESS_TOKEN_URL = "https://api.login.yahoo.com/oauth/v2/get_token";
@@ -36,7 +28,7 @@ public class CustomOAuth1TemplateTest {
 
 	private static final String REQUEST_TOKEN_URL = "https://api.login.yahoo.com/oauth/v2/get_request_token";
 	
-	private YahooOAuth1Template oauth10a;
+	private CustomOAuth1Template oauth10a;
 	
 //	private YahooOAuth1Template oauth10;
 	
@@ -44,7 +36,7 @@ public class CustomOAuth1TemplateTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		oauth10a = new YahooOAuth1Template("consumer_key", "consumer_secret",
+		oauth10a = new CustomOAuth1Template("consumer_key", "consumer_secret",
 				REQUEST_TOKEN_URL,
 				AUTHENTICATE_URL,
 				ACCESS_TOKEN_URL);

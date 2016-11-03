@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class YahooSigningSupport extends SigningSupport {
+public class CustomSigningSupport extends SigningSupport {
 
 	public Map<String, String> yahooOAuthParameters(String consumerKey, String accessToken, String refreshToken) {
 		TimestampGenerator timestampGenerator = new DefaultTimestampGenerator();

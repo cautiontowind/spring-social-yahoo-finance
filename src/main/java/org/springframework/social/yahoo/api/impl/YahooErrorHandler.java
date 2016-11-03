@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.social.*;
-import org.springframework.social.yahoo.connect.support.YahooOAuth1Connection;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 
 import java.io.IOException;

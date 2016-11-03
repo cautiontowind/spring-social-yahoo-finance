@@ -15,36 +15,22 @@
  */
 package org.springframework.social.oauth1;
 
+import org.springframework.http.*;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.social.support.ClientHttpRequestFactorySelector;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.social.oauth1.AuthorizedRequestToken;
-import org.springframework.social.oauth1.EmptyMultiValueMap;
-import org.springframework.social.oauth1.OAuth1Template;
-import org.springframework.social.oauth1.OAuth1Version;
-import org.springframework.social.oauth1.SigningSupport;
-import org.springframework.social.support.ClientHttpRequestFactorySelector;
-import org.springframework.social.yahoo.connect.support.YahooOAuth1Connection;
-import org.springframework.util.Assert;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+public class CustomOAuth1Template extends OAuth1Template {
 
-public class YahooOAuth1Template extends OAuth1Template {
-	Logger logger = LoggerFactory.getLogger(YahooOAuth1Connection.class);
-	
 	private final URI requestTokenUrl;
 	
 	private final String consumerKey;
@@ -57,34 +43,29 @@ public class YahooOAuth1Template extends OAuth1Template {
 
 	private final OAuth1Version version;
 	
-	private final YahooSigningSupport signingUtils;
+	private final CustomSigningSupport signingUtils;
 
-	public YahooOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String accessTokenUrl) {
+	public CustomOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String accessTokenUrl) {
 		this(consumerKey, consumerSecret, requestTokenUrl, authorizeUrl, accessTokenUrl, OAuth1Version.CORE_10_REVISION_A);
 	}
 
-	public YahooOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String accessTokenUrl, OAuth1Version version) {
+	public CustomOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String accessTokenUrl, OAuth1Version version) {
 		this(consumerKey, consumerSecret, requestTokenUrl, authorizeUrl, null, accessTokenUrl, version);
 	}
 
-	public YahooOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String authenticateUrl, String accessTokenUrl) {
+	public CustomOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String authenticateUrl, String accessTokenUrl) {
 		this(consumerKey, consumerSecret, requestTokenUrl, authorizeUrl, authenticateUrl, accessTokenUrl, OAuth1Version.CORE_10_REVISION_A);
 	}
 	
-	public YahooOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String authenticateUrl, String accessTokenUrl, OAuth1Version version) {
+	public CustomOAuth1Template(String consumerKey, String consumerSecret, String requestTokenUrl, String authorizeUrl, String authenticateUrl, String accessTokenUrl, OAuth1Version version) {
 		super(consumerKey, consumerSecret, requestTokenUrl, authorizeUrl, authenticateUrl, accessTokenUrl, version);
-		Assert.notNull(consumerKey, "The consumerKey property cannot be null");
-		Assert.notNull(consumerSecret, "The consumerSecret property cannot be null");
-		Assert.notNull(requestTokenUrl, "The requestTokenUrl property cannot be null");
-		Assert.notNull(authorizeUrl, "The authorizeUrl property cannot be null");
-		Assert.notNull(accessTokenUrl, "The accessTokenUrl property cannot be null");
 		this.consumerKey = consumerKey;
 		this.consumerSecret = consumerSecret;
 		this.requestTokenUrl = encodeTokenUri(requestTokenUrl);
 		this.accessTokenUrl = encodeTokenUri(accessTokenUrl);
 		this.version = version;
 		this.restTemplate = createRestTemplate();
-		this.signingUtils = new YahooSigningSupport();
+		this.signingUtils = new CustomSigningSupport();
 	}
 
 	public MultiValueMap<String, String> exchangeForYahooAccessToken(AuthorizedRequestToken requestToken, MultiValueMap<String, String> additionalParameters) {
@@ -115,8 +96,6 @@ public class YahooOAuth1Template extends OAuth1Template {
 		if (version == OAuth1Version.CORE_10_REVISION_A) {
 			oauthParameters.put("oauth_callback", callbackUrl);
 		}
-		Assert.notNull(oldAccessToken);
-		Assert.notNull(refreshToken);
 		return refreshAccessToken(accessTokenUrl, oauthParameters, additionalParameters, tokenSecret, oldAccessToken, refreshToken);
 	}
 	
