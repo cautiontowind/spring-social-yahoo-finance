@@ -76,10 +76,7 @@ public class CustomOAuth1Template extends OAuth1Template {
 		}
 		return exchangeForToken(accessTokenUrl, tokenParameters, additionalParameters, requestToken.getSecret());
 	}
-	
-	
-	
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private MultiValueMap<String, String> exchangeForToken(URI tokenUrl, Map<String, String> tokenParameters, MultiValueMap<String, String> additionalParameters, String tokenSecret) {
 		HttpHeaders headers = new HttpHeaders();

@@ -107,7 +107,7 @@ public class CustomConnectSupport extends ConnectSupport {
 		String state = connectionFactory.generateState();
 		parameters.add("state", state);
 		sessionStrategy.setAttribute(request, OAUTH2_STATE_ATTRIBUTE, state);
-		if (useAuthenticateUrl) { 
+		if (useAuthenticateUrl) {
 			return oauthOperations.buildAuthenticateUrl(parameters);
 		} else {
 			return oauthOperations.buildAuthorizeUrl(parameters);
