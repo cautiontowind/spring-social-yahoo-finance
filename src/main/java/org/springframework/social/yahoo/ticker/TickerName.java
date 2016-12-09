@@ -617,6 +617,4 @@ public enum TickerName {
     TickerName(String symbol){this.symbol = symbol;}
 
 
-
-
 }

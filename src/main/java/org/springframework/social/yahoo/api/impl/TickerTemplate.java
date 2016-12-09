@@ -75,10 +75,8 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         }
         //Add quotes to each element and join
         String allSymbols = merge.stream().map((sym) -> "\"" + sym + "\"").collect(Collectors.joining(", "));
-
         String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + allSymbols + ")", "UTF-8");
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
-
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<Ticker> tickers = new ArrayList<Ticker>();
         String date = node.findValue("created").asText();
@@ -89,8 +87,12 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
                 tickers.add(aTicker);
 
             }
+            return tickers;
         }
 
+        Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+        aTicker.setDate(date);
+        tickers.add(aTicker);
         return tickers;
     }
 

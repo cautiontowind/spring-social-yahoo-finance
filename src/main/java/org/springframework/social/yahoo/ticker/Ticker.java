@@ -2,7 +2,6 @@
 package org.springframework.social.yahoo.ticker;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
 
 import java.io.Serializable;
 
@@ -51,6 +50,7 @@ public class Ticker implements Serializable{
 	private String changeRealtime;
 	@JsonProperty("Change_PercentChange")
 	private String changePercentChange;
+	@JsonProperty("ChangeinPercent")
 	private String changeInPercent;
 	@JsonProperty("Commission")
 	private String commission;
