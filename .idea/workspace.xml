@@ -65,8 +65,8 @@
       <file leaf-file-name="TickerTemplate.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38202247">
-              <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
+            <state vertical-scroll-proportion="1.0842696">
+              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1422,7 +1422,7 @@
       <workItem from="1480431250812" duration="838000" />
       <workItem from="1480706051830" duration="804000" />
       <workItem from="1481287400649" duration="2779000" />
-      <workItem from="1481315878163" duration="701000" />
+      <workItem from="1481315878163" duration="992000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Api Bindings. To do: Fix Tests&#10;">
       <created>1437588838260</created>
@@ -1440,7 +1440,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201160000" />
+    <option name="totallyTimeSpent" value="201451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="30" width="1440" height="873" extended-state="6" />
@@ -1857,8 +1857,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38202247">
-          <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
+        <state vertical-scroll-proportion="1.0842696">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>

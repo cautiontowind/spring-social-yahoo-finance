@@ -77,8 +77,11 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
                 tickers.add(aTicker);
 
             }
+            return tickers;
         }
-
+        Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+        aTicker.setDate(date);
+        tickers.add(aTicker);
         return tickers;
     }
 
