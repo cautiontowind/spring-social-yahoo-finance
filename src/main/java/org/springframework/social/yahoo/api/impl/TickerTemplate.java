@@ -9,8 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.yahoo.api.TickerOperations;
+import org.springframework.social.yahoo.ticker.AbstractTicker;
+import org.springframework.social.yahoo.ticker.IndexSymbol;
+import org.springframework.social.yahoo.ticker.LondonExchangeSymbol;
 import org.springframework.social.yahoo.ticker.Ticker;
-import org.springframework.social.yahoo.ticker.TickerName;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +20,7 @@ import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,20 +36,18 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
     }
 
 
+
+
     @Override
-    public Ticker ticker(TickerName tickerName) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
+    public Ticker ticker(LondonExchangeSymbol tickerName) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
-        request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
 
         request.set("format","json");
 
-        String yqlQuery = null;
-        if(tickerName.getSymbol().startsWith("^")) {
-            yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
-        } else {
-            yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + ".L\")", "UTF-8");
-        }
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
+
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
 
 
@@ -58,15 +59,35 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
     }
 
     @Override
-    public List<Ticker> tickers(TickerName[] tickerNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException {
+    public Ticker index(IndexSymbol indexSymbol) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
-        request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
+
+        request.set("format","json");
+
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + indexSymbol.getSymbol() + "\")", "UTF-8");
+
+        JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
+
+
+        JsonNode node1 = node.path("query").path("results").path("quote");
+
+        Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+        aTicker.setDate(node.findValue("created").asText());
+        return aTicker;
+    }
+
+    @Override
+    public List<Ticker> tickers(LondonExchangeSymbol[] tickerNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException {
+        requireUserAuthorization();
+        MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
         request.set("format", "json");
 
         List<String> merge = new ArrayList<String>();
 
-        for (TickerName symbol : tickerNames) {
+        for (LondonExchangeSymbol symbol : tickerNames) {
             if(symbol.getSymbol().startsWith("^")){
                 merge.add(symbol.getSymbol());
             }else {
@@ -83,6 +104,40 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 Ticker aTicker = objectMapper().readValue(objNode.toString(), Ticker.class);
+                aTicker.setDate(date);
+                tickers.add(aTicker);
+
+            }
+            return tickers;
+        }
+
+        Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+        aTicker.setDate(date);
+        tickers.add(aTicker);
+        return tickers;
+    }
+
+    @Override
+    public List<AbstractTicker> historicalData(LondonExchangeSymbol tickerName, LocalDate startDate, LocalDate endDate) throws UnsupportedEncodingException, JsonParseException, JsonMappingException, IOException {
+        requireUserAuthorization();
+        MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
+
+        request.set("format","json");
+        request.set("diagnostics","false");
+        request.set("debug","false");
+
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.historicaldata where symbol =\"" + tickerName.getSymbol() + "\" and startDate =\""+startDate+"\" and endDate = \""+endDate+"\"", "UTF-8");
+
+        JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
+
+
+        JsonNode node1 = node.path("query").path("results").path("quote");
+        List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
+        String date = node.findValue("created").asText();
+        if (node1.isArray()) {
+            for (final JsonNode objNode : node1) {
+                AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
                 aTicker.setDate(date);
                 tickers.add(aTicker);
 

@@ -6,6 +6,7 @@
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/Profile.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/ProfileOperations.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/connect/support/CustomOAuth1Connection.java
+/Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/ticker/LondonExchangeSymbol.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/oauth1/CustomSigningSupport.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/config/xml/YahooNamespaceHandler.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/oauth1/CustomOAuth1Template.java
@@ -13,6 +14,7 @@
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/connect/YahooConnectionFactory.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/connect/YahooServiceProvider.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java
+/Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/config/support/YahooApiHelper.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/YahooObject.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/YahooObjectMixin.java
@@ -24,8 +26,8 @@
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/profile/Profile.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/Image.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java
+/Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/ticker/IndexSymbol.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/Email.java
-/Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/ticker/TickerName.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/impl/ClientAuthorizedYahooTemplate.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/security/YahooAuthenticationService.java
 /Users/khaliluddin/workspace/spring-social-yahoo-finance/src/main/java/org/springframework/social/yahoo/api/ForexOperations.java

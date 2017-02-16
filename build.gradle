@@ -25,7 +25,7 @@ dependencies {
     }
     compile "org.springframework.social:spring-social-core:$springSocialCoreVersion"
     compile "org.springframework.social:spring-social-web:$springSocialWebVersion"
-    compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapperAslVersion"
+    //compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapperAslVersion"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4:$jacksonDatatypeHibernate4Version"
     compile "com.google.guava:guava:$guavaVersion"
     compile "org.mockito:mockito-core:$mockitoCoreVersion"

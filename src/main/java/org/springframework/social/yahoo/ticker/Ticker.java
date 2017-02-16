@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-public class Ticker implements Serializable{
+public class Ticker extends AbstractTicker implements Serializable{
 
 // "EarningsShare":"0.2160",
 // "":null,
@@ -128,8 +128,7 @@ public class Ticker implements Serializable{
 	private String notes;
 	@JsonProperty("OneyrTargetPrice")
 	private String oneYrTargetPrice;
-	@JsonProperty("Open")
-	private String open;
+
 	@JsonProperty("OrderBookRealtime")
 	private String orderBookRealtime;
 	@JsonProperty("PEGRatio")
@@ -172,18 +171,14 @@ public class Ticker implements Serializable{
 	private String tradeDate;
 	@JsonProperty("TwoHundredDayMovingAverage")
 	private String twoHundredDayMovingAverage;
-	@JsonProperty("Volume")
-	private String volume;
+
 	@JsonProperty("YearHigh")
 	private String yearHigh;
 	@JsonProperty("YearLow")
 	private String yearLow;
 	@JsonProperty("YearRange")
 	private String yearRange;
-	@JsonProperty("Symbol")
-	private String symbol;
-	@JsonProperty("created")
-   	private String date;
+
 
 	//Accessors
 
@@ -852,6 +847,7 @@ public class Ticker implements Serializable{
 		this.date = date;
 	}
 
+
 	@Override
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
@@ -921,6 +917,7 @@ public class Ticker implements Serializable{
 		sb.append("PercentChange: ").append(percentChange).append(", ");
 		sb.append("PercentChangeFromFiftydayMovingAverage: ").append(percentChangeFromFiftyDayMovingAverage).append(", ");
 		sb.append("PercentChangeFromTwoHundreddayMovingAverage: ").append(percentChangeFromTwoHundredDayMovingAverage).append(", ");
+		sb.append("Volume: ").append(volume).append(", ");
 		sb.append("PercentChangeFromYearLow: ").append(percentChangeFromYearLow).append(", ");
 		sb.append("PreviousClose: ").append(previousClose).append(", ");
 		sb.append("PriceBook: ").append(priceBook).append(", ");

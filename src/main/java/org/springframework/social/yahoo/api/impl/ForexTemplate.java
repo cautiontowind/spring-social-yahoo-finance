@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.yahoo.api.ForexOperations;
+import org.springframework.social.yahoo.ticker.AbstractTicker;
 import org.springframework.social.yahoo.ticker.ForexName;
 import org.springframework.social.yahoo.ticker.Ticker;
 import org.springframework.util.LinkedMultiValueMap;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
     public Ticker ticker(ForexName forexName) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
-        request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
+        request.set("env",UriUtils.encodePath("http://store://datatables.org/alltableswithkeys","UTF-8"));
 
         request.set("format","json");
         String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + forexName.getSymbol() + ")", "UTF-8");
@@ -53,7 +55,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
     public List<Ticker> tickers(ForexName[] forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
-        request.set("env",UriUtils.encodePath("http://datatables.org/alltables.env","UTF-8"));
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
         request.set("format", "json");
 
         List<String> merge = new ArrayList<String>();
@@ -79,6 +81,41 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
             }
             return tickers;
         }
+        Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+        aTicker.setDate(date);
+        tickers.add(aTicker);
+        return tickers;
+    }
+
+    @Override
+    public List<AbstractTicker> historicalData(ForexName forexName, LocalDate startDate, LocalDate endDate) throws UnsupportedEncodingException, JsonParseException, JsonMappingException, IOException {
+        requireUserAuthorization();
+        MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
+
+        request.set("format","json");
+
+        request.set("diagnostics","true");
+        request.set("debug","true");
+        System.out.println("MOO1: "+forexName.getSymbol() );
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.historicaldata where symbol =" + forexName.getSymbol() + " and startDate =\""+startDate+"\" and endDate = \""+endDate+"\"", "UTF-8");
+
+        JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
+        System.out.println("ZOO: "+node);
+
+        JsonNode node1 = node.path("query").path("results").path("quote");
+        List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
+        String date = node.findValue("created").asText();
+        if (node1.isArray()) {
+            for (final JsonNode objNode : node1) {
+                AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
+                aTicker.setDate(date);
+                tickers.add(aTicker);
+
+            }
+            return tickers;
+        }
+
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
         aTicker.setDate(date);
         tickers.add(aTicker);

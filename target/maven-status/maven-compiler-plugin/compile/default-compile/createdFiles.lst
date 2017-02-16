@@ -8,11 +8,11 @@ org/springframework/social/yahoo/api/impl/YahooObjectMixin.class
 org/springframework/social/yahoo/api/Profile.class
 org/springframework/social/yahoo/ticker/Ticker.class
 org/springframework/social/yahoo/api/impl/ForexTemplate.class
+org/springframework/social/yahoo/ticker/AbstractTicker.class
 org/springframework/social/oauth1/CustomOAuth1Template.class
 org/springframework/social/connect/web/CustomReconnectFilter$1.class
 org/springframework/social/yahoo/profile/Email.class
 org/springframework/social/yahoo/api/Yahoo.class
-org/springframework/social/yahoo/ticker/TickerName.class
 org/springframework/social/yahoo/ticker/ForexName.class
 org/springframework/social/yahoo/connect/support/CustomOAuth1Connection.class
 org/springframework/social/yahoo/security/YahooAuthenticationService.class
@@ -30,6 +30,7 @@ org/springframework/social/yahoo/api/impl/YahooTemplate.class
 org/springframework/social/yahoo/connect/YahooConnectionFactory.class
 org/springframework/social/yahoo/api/ForexOperations.class
 org/springframework/social/yahoo/api/YahooObject.class
+org/springframework/social/yahoo/ticker/LondonExchangeSymbol.class
 org/springframework/social/connect/web/CustomConnectSupport.class
 org/springframework/social/yahoo/connect/YahooAdapter.class
 org/springframework/social/yahoo/connect/YahooServiceProvider.class
@@ -38,3 +39,4 @@ org/springframework/social/yahoo/api/impl/YahooErrorHandler.class
 org/springframework/social/yahoo/config/support/YahooApiHelper.class
 org/springframework/social/oauth1/CustomSigningSupport$1.class
 org/springframework/social/yahoo/api/Email.class
+org/springframework/social/yahoo/ticker/IndexSymbol.class
