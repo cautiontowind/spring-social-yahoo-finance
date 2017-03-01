@@ -1,8 +1,10 @@
 package org.springframework.social.yahoo.ticker;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by khaliluddin on 14/02/2017.
@@ -13,27 +15,27 @@ public class AbstractTicker  implements Serializable {
     protected String symbol;
 
     @JsonProperty("created")
-    protected String date;
+    protected DateTime date;
 
     @JsonProperty("High")
-    private String high;
+    private BigDecimal high;
 
 
     @JsonProperty("Low")
-    private String low;
+    private BigDecimal low;
 
     @JsonProperty("Close")
-    private String close;
+    private BigDecimal close;
 
 
     @JsonProperty("Adj_Close")
-    private String adjClose;
+    private BigDecimal adjClose;
 
     @JsonProperty("Open")
-    protected String open;
+    protected BigDecimal open;
 
     @JsonProperty("Volume")
-    protected String volume;
+    protected Long volume;
 
     public String getSymbol() {
         return symbol;
@@ -43,60 +45,59 @@ public class AbstractTicker  implements Serializable {
         this.symbol = symbol;
     }
 
-    public String getDate() {
+    public DateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(DateTime date) {
         this.date = date;
     }
 
-
-    public String getAdjClose() {
-        return adjClose;
-    }
-
-    public void setAdjClose(String adjClose) {
-        this.adjClose = adjClose;
-    }
-
-    public String getHigh() {
+    public BigDecimal getHigh() {
         return high;
     }
 
-    public void setHigh(String high) {
+    public void setHigh(BigDecimal high) {
         this.high = high;
     }
 
-    public String getLow() {
+    public BigDecimal getLow() {
         return low;
     }
 
-    public void setLow(String low) {
+    public void setLow(BigDecimal low) {
         this.low = low;
     }
 
-    public String getClose() {
+    public BigDecimal getClose() {
         return close;
     }
 
-    public void setClose(String close) {
+    public void setClose(BigDecimal close) {
         this.close = close;
     }
 
-    public String getOpen() {
+    public BigDecimal getAdjClose() {
+        return adjClose;
+    }
+
+    public void setAdjClose(BigDecimal adjClose) {
+        this.adjClose = adjClose;
+    }
+
+    public BigDecimal getOpen() {
         return open;
     }
 
-    public void setOpen(String open) {
+    public void setOpen(BigDecimal open) {
         this.open = open;
     }
 
-    public String getVolume() {
+    public Long getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(Long volume) {
         this.volume = volume;
     }
 

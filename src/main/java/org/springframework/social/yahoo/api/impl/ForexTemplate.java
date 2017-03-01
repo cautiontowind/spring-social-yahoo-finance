@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.joda.time.DateTime;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.yahoo.api.ForexOperations;
 import org.springframework.social.yahoo.ticker.AbstractTicker;
@@ -17,8 +18,11 @@ import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,7 +51,10 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         JsonNode node1 = node.path("query").path("results").path("quote");
 
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(node.findValue("created").asText());
+        String date = node.findValue("created").asText();
+        //DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTime());
+        DateTime dateTime = new DateTime(date);
+        aTicker.setDate(dateTime);
         return aTicker;
     }
 
@@ -72,17 +79,19 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<Ticker> tickers = new ArrayList<Ticker>();
         String date = node.findValue("created").asText();
+        //DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTime());
+        DateTime dateTime = new DateTime(date);
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 Ticker aTicker = objectMapper().readValue(objNode.toString(), Ticker.class);
-                aTicker.setDate(date);
+                aTicker.setDate(dateTime);
                 tickers.add(aTicker);
 
             }
             return tickers;
         }
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(date);
+        aTicker.setDate(dateTime);
         tickers.add(aTicker);
         return tickers;
     }
@@ -106,10 +115,20 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
         String date = node.findValue("created").asText();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/d");
+
+        Date localDate = null;
+        try {
+            localDate = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
-                aTicker.setDate(date);
+
+                aTicker.setDate(new DateTime(localDate));
                 tickers.add(aTicker);
 
             }
@@ -117,7 +136,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         }
 
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(date);
+        aTicker.setDate(new DateTime(localDate));
         tickers.add(aTicker);
         return tickers;
     }

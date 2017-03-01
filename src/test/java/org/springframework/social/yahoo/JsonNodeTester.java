@@ -1,17 +1,16 @@
 package org.springframework.social.yahoo;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.parser.JSONParser;
+import org.joda.time.DateTime;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.yahoo.ticker.Ticker;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -28,10 +27,12 @@ public class JsonNodeTester {
             JsonNode node1 = node.path("query").path("results").path("quote");
             List<Ticker> tickers = new ArrayList<Ticker>();
             String date = node.findValue("created").asText();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/d");
+            LocalDate localDate = LocalDate.parse(date,formatter);
             if (node1.isArray()) {
                 for (final JsonNode objNode : node1) {
                     Ticker aTicker = objectMapper().readValue(objNode.toString(), Ticker.class);
-                    aTicker.setDate(date);
+                    aTicker.setDate(new DateTime(localDate));
                     tickers.add(aTicker);
 
                 }

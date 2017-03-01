@@ -2,8 +2,10 @@
 package org.springframework.social.yahoo.ticker;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Ticker extends AbstractTicker implements Serializable{
 
@@ -623,11 +625,11 @@ public class Ticker extends AbstractTicker implements Serializable{
 		this.oneYrTargetPrice = oneYrTargetPrice;
 	}
 
-	public String getOpen() {
+	public BigDecimal getOpen() {
 		return open;
 	}
 
-	public void setOpen(String open) {
+	public void setOpen(BigDecimal open) {
 		this.open = open;
 	}
 
@@ -799,11 +801,11 @@ public class Ticker extends AbstractTicker implements Serializable{
 		this.twoHundredDayMovingAverage = twoHundredDayMovingAverage;
 	}
 
-	public String getVolume() {
+	public Long getVolume() {
 		return volume;
 	}
 
-	public void setVolume(String volume) {
+	public void setVolume(Long volume) {
 		this.volume = volume;
 	}
 
@@ -839,11 +841,11 @@ public class Ticker extends AbstractTicker implements Serializable{
 		this.symbol = symbol;
 	}
 
-	public String getDate() {
+	public DateTime getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(DateTime date) {
 		this.date = date;
 	}
 
