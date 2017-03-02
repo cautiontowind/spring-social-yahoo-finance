@@ -40,10 +40,10 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
     public Ticker ticker(ForexName forexName) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
-        request.set("env",UriUtils.encodePath("http://store://datatables.org/alltableswithkeys","UTF-8"));
+        request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
 
         request.set("format","json");
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + forexName.getSymbol() + ")", "UTF-8");
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + forexName.getSymbol() + "\")", "UTF-8");
 
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
 
@@ -51,6 +51,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         JsonNode node1 = node.path("query").path("results").path("quote");
 
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
+
         String date = node.findValue("created").asText();
         //DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTime());
         DateTime dateTime = new DateTime(date);
@@ -73,7 +74,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
 
         String allSymbols = String.join(",", merge);
 
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (" + allSymbols + ")", "UTF-8");
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + allSymbols + "\")", "UTF-8");
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
 
         JsonNode node1 = node.path("query").path("results").path("quote");
@@ -106,11 +107,11 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
 
         request.set("diagnostics","true");
         request.set("debug","true");
-        System.out.println("MOO1: "+forexName.getSymbol() );
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.historicaldata where symbol =" + forexName.getSymbol() + " and startDate =\""+startDate+"\" and endDate = \""+endDate+"\"", "UTF-8");
+
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.historicaldata where symbol =\"" + forexName.getSymbol() + "\" and startDate =\""+startDate+"\" and endDate = \""+endDate+"\"", "UTF-8");
 
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
-        System.out.println("ZOO: "+node);
+
 
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();

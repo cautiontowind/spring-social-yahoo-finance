@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afc7db26-8b5c-4a31-94e1-9143c4a90be2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/api/impl/ForexTemplate.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/api/impl/ForexTemplate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/api/impl/TickerTemplate.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/api/impl/TickerTemplate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/AbstractTicker.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/AbstractTicker.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/ForexName.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/ForexName.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/Ticker.class" afterPath="$PROJECT_DIR$/target/classes/org/springframework/social/yahoo/ticker/Ticker.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/spring-social-yahoo.jar" afterPath="$PROJECT_DIR$/target/spring-social-yahoo.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/org/springframework/social/yahoo/JsonNodeTester.class" afterPath="$PROJECT_DIR$/target/test-classes/org/springframework/social/yahoo/JsonNodeTester.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java" afterPath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java" afterPath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java" afterPath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java" afterPath="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/springframework/social/yahoo/JsonNodeTester.java" afterPath="$PROJECT_DIR$/src/test/java/org/springframework/social/yahoo/JsonNodeTester.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <ignored path="spring-social-yahoo.iws" />
@@ -72,20 +63,18 @@
       <file leaf-file-name="TickerTemplate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.185185">
-              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-6.296296">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForexTemplate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ForexTemplate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3627451">
-              <caret line="82" column="47" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,15 +82,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ticker.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Ticker.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="842" column="0" selection-start-line="842" selection-start-column="0" selection-end-line="842" selection-end-column="0" />
-              <folding>
-                <element signature="e#21875#21876#0" expanded="true" />
-                <element signature="e#21893#21894#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="893" column="27" selection-start-line="893" selection-start-column="24" selection-end-line="893" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,7 +97,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-              <folding />
+              <folding>
+                <element signature="e#1007#1008#0" expanded="true" />
+                <element signature="e#1039#1040#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -531,11 +520,11 @@
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/IndexSymbol.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/ForexOperations.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/TickerOperations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/springframework/social/yahoo/JsonNodeTester.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java" />
       </list>
     </option>
@@ -582,6 +571,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1005,8 +996,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1502,7 +1491,9 @@
       <workItem from="1488029953145" duration="1401000" />
       <workItem from="1488093471476" duration="5058000" />
       <workItem from="1488269373125" duration="5728000" />
-      <workItem from="1488358666443" duration="5013000" />
+      <workItem from="1488358666443" duration="5150000" />
+      <workItem from="1488456513813" duration="1117000" />
+      <workItem from="1488458434269" duration="2873000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Api Bindings. To do: Fix Tests&#10;">
       <created>1437588838260</created>
@@ -1520,7 +1511,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251495000" />
+    <option name="totallyTimeSpent" value="255622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
@@ -1528,15 +1519,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="LiquibaseEJBModel" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2765685" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2765685" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="LiquibaseModel" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27539343" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1546,7 +1535,6 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39925373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1554,7 +1542,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39925373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290653" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1848,7 +1839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2247191">
           <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1856,7 +1846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="610" column="0" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,7 +1853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1992032">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1889,19 +1877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33582088">
-          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-          <folding>
-            <element signature="e#14626#14627#0" expanded="false" />
-            <element signature="e#14662#14663#0" expanded="false" />
-            <element signature="e#14694#14695#0" expanded="false" />
-            <element signature="e#14728#14729#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/config/support/YahooApiHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5597015">
@@ -1913,28 +1888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="842" column="0" selection-start-line="842" selection-start-column="0" selection-end-line="842" selection-end-column="0" />
-          <folding>
-            <element signature="e#21875#21876#0" expanded="true" />
-            <element signature="e#21893#21894#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1942,27 +1895,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6424581">
           <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/ForexName.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.185185">
-          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.44692737">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#13506#13507#0" expanded="true" />
+            <element signature="e#13542#13543#0" expanded="true" />
+            <element signature="e#13574#13575#0" expanded="true" />
+            <element signature="e#13608#13609#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/ForexTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3627451">
-          <caret line="82" column="47" selection-start-line="82" selection-start-column="47" selection-end-line="82" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/api/impl/TickerTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.296296">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/AbstractTicker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+          <folding>
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/springframework/social/yahoo/ticker/Ticker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="893" column="27" selection-start-line="893" selection-start-column="24" selection-end-line="893" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
