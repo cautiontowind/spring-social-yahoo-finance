@@ -22,11 +22,8 @@ import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -187,22 +184,12 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
         String date = node.findValue("created").asText();
-
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/d");
-
-        Date localDate = null;
-        try {
-            localDate = df.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTime());
 
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
-                if(localDate != null) {
-                    aTicker.setDate(new DateTime(localDate));
-                }
+                    aTicker.setDate(new DateTime(dateTime));
                 tickers.add(aTicker);
 
             }
@@ -210,7 +197,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         }
 
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(new DateTime(localDate));
+        aTicker.setDate(new DateTime(dateTime));
         tickers.add(aTicker);
         return tickers;
     }
