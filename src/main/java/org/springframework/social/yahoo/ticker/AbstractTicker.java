@@ -14,7 +14,7 @@ public class AbstractTicker  implements Serializable {
     @JsonProperty("Symbol")
     protected String symbol;
 
-    @JsonProperty("created")
+    @JsonProperty("Date")
     protected DateTime date;
 
     @JsonProperty("High")

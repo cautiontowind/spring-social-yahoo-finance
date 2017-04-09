@@ -109,25 +109,17 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.historicaldata where symbol =\"" + forexName.getSymbol() + "\" and startDate =\""+startDate+"\" and endDate = \""+endDate+"\"", "UTF-8");
 
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
-
-
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
-        String date = node.findValue("created").asText();
-        DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTimeParser());
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
-
-                aTicker.setDate(new DateTime(dateTime));
                 tickers.add(aTicker);
 
             }
             return tickers;
         }
-
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(new DateTime(dateTime));
         tickers.add(aTicker);
         return tickers;
     }

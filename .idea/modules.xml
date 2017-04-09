@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/spring-social-yahoo.iml" filepath="$PROJECT_DIR$/spring-social-yahoo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-social-yahoo.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-social-yahoo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-social-yahoo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-social-yahoo_main.iml" group="spring-social-yahoo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-social-yahoo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-social-yahoo_test.iml" group="spring-social-yahoo" />
     </modules>
   </component>
 </project>

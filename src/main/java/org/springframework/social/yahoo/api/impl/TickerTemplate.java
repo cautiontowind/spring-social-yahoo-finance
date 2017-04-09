@@ -183,13 +183,13 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
 
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<AbstractTicker> tickers = new ArrayList<AbstractTicker>();
-        String date = node.findValue("created").asText();
-        DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTimeParser());
+        //String date = node.findValue("created").asText();
+        //DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTimeParser());
 
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 AbstractTicker aTicker = objectMapper().readValue(objNode.toString(), AbstractTicker.class);
-                    aTicker.setDate(new DateTime(dateTime));
+                    //aTicker.setDate(new DateTime(node1.get("Date")));
                 tickers.add(aTicker);
 
             }
@@ -197,7 +197,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         }
 
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
-        aTicker.setDate(new DateTime(dateTime));
+        //aTicker.setDate(new DateTime(node1.get("Date")));
         tickers.add(aTicker);
         return tickers;
     }
