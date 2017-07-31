@@ -18,8 +18,10 @@ public interface TickerOperations {
     public Ticker index(IndexSymbol indexSymbol)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
     public List<Ticker> index(IndexSymbol[] indexSymbols)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
     public Ticker ticker(LondonExchangeSymbol tickerName)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
+    public Ticker ticker(String symbol)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
     public List<Ticker> tickers(LondonExchangeSymbol[] tickerNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
-    public List<AbstractTicker> historicalData(LondonExchangeSymbol tickerName, LocalDate startDate, LocalDate endDate)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
+    //Deprecated
+    //public List<AbstractTicker> historicalData(LondonExchangeSymbol tickerName, LocalDate startDate, LocalDate endDate)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
 
 
 }

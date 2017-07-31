@@ -85,12 +85,15 @@ public class CustomOAuth1Connection<A> extends AbstractConnection<A> {
 				String callBack = "";
 				CustomOAuth1Template customOAuth1Template = (CustomOAuth1Template) serviceProvider.getOAuthOperations();
 				MultiValueMap<String, String> response = customOAuth1Template.fetchYahooRefreshAccessToken(callBack, null, data.getSecret(), data.getAccessToken(), data.getRefreshToken());
-
+				logger.debug("Consumer Key {} ", consumerKey);
 				String accessTokenValue = response.getFirst("oauth_token");
+				logger.debug("Access Token to Refresh {} ", accessTokenValue);
 				String accessTokenSecret = response.getFirst("oauth_token_secret");
+				logger.debug("Access Token Secret {} ", accessTokenSecret);
 				String refreshToken = response.getFirst("oauth_session_handle");
+				logger.debug("Refresh Token {} ", refreshToken);
 				Long expireTime = new Long(response.getFirst("oauth_expires_in"));
-
+				logger.debug("Expire Time {} ", expireTime);
 				initAccessTokens(accessTokenValue, accessTokenSecret, refreshToken, expireTime, consumerKey);
 
 				initApi();

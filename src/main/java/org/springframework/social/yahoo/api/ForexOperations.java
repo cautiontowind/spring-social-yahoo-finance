@@ -16,6 +16,7 @@ import java.util.List;
  */
 public interface ForexOperations {
     public Ticker ticker(ForexName forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
-    public List<Ticker> tickers(ForexName[] forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
-    public List<AbstractTicker> historicalData(ForexName firstName, LocalDate startDate, LocalDate endDate)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
+    public List<Ticker> forexes(ForexName[] forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
+    //Deprecated
+    //public List<AbstractTicker> historicalData(ForexName firstName, LocalDate startDate, LocalDate endDate)  throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException;
 }

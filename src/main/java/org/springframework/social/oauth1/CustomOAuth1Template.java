@@ -15,11 +15,15 @@
  */
 package org.springframework.social.oauth1;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.social.connect.web.CustomConnectSupport;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -30,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomOAuth1Template extends OAuth1Template {
-
+	private final static Logger logger = LoggerFactory.getLogger(CustomOAuth1Template.class);
 	private final URI requestTokenUrl;
 	
 	private final String consumerKey;
@@ -81,7 +85,12 @@ public class CustomOAuth1Template extends OAuth1Template {
 	private MultiValueMap<String, String> exchangeForToken(URI tokenUrl, Map<String, String> tokenParameters, MultiValueMap<String, String> additionalParameters, String tokenSecret) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", buildAuthorizationHeaderValue(tokenUrl, tokenParameters, additionalParameters, tokenSecret));
-		ResponseEntity<MultiValueMap> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, new HttpEntity<MultiValueMap<String, String>>(additionalParameters, headers), MultiValueMap.class);		
+		ResponseEntity<MultiValueMap> response = null;
+		try {
+			response = restTemplate.exchange(tokenUrl, HttpMethod.POST, new HttpEntity<MultiValueMap<String, String>>(additionalParameters, headers), MultiValueMap.class);
+		}catch (RestClientException ex){
+			ex.printStackTrace();
+		}
 		MultiValueMap<String, String> body = response.getBody();
 		return body;
 	}
@@ -93,7 +102,10 @@ public class CustomOAuth1Template extends OAuth1Template {
 		if (version == OAuth1Version.CORE_10_REVISION_A) {
 			oauthParameters.put("oauth_callback", callbackUrl);
 		}
-		return refreshAccessToken(accessTokenUrl, oauthParameters, additionalParameters, tokenSecret, oldAccessToken, refreshToken);
+
+		MultiValueMap<String, String>  refreshAccessToken = refreshAccessToken(accessTokenUrl, oauthParameters, additionalParameters, tokenSecret, oldAccessToken, refreshToken);
+		logger.debug("Access Token Refreshed {} ", refreshAccessToken);
+		return refreshAccessToken;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -103,6 +115,7 @@ public class CustomOAuth1Template extends OAuth1Template {
 		headers.add("Authorization", buildRefreshAuthorizationHeaderValue(tokenUrl, tokenParameters, additionalParameters, tokenSecret, oldAccessToken, refreshToken));
 		ResponseEntity<MultiValueMap> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, new HttpEntity<MultiValueMap<String, String>>(additionalParameters, headers), MultiValueMap.class);		
 		MultiValueMap<String, String> body = response.getBody();
+		logger.debug("Access Token Refresh Response Body {}  ", body);
 		//return createOAuthToken(body.getFirst("oauth_token"), body.getFirst("oauth_token_secret"), body);
 		return body;
 	}

@@ -38,29 +38,32 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
     }
 
 
-
-
     @Override
     public Ticker ticker(LondonExchangeSymbol tickerName) throws JsonParseException, JsonMappingException, UnsupportedEncodingException, IOException {
+       Ticker ticker = getTicker(tickerName.getSymbol());
+       return ticker;
+    }
+
+    @Override
+    public Ticker ticker(String symbol) throws UnsupportedEncodingException, JsonParseException, JsonMappingException, IOException {
+        Ticker ticker = getTicker(symbol);
+        return ticker;
+    }
+
+    private Ticker getTicker(String symbol) throws IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
         request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
-
         request.set("format","json");
-
-        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + tickerName.getSymbol() + "\")", "UTF-8");
-
+        String yqlQuery = UriUtils.encodePath("select * from yahoo.finance.quotes where symbol in (\"" + symbol + "\")", "UTF-8");
         JsonNode node = restTemplate.postForObject(buildUri(yqlQuery), request, JsonNode.class);
-
-
         JsonNode node1 = node.path("query").path("results").path("quote");
-
         Ticker aTicker = objectMapper().readValue(node1.toString(), Ticker.class);
         String date = node.findValue("created").asText();
         //DateTime dateTime = new DateTime(date);//DateTime.parse(date, ISODateTimeFormat.dateTime());
         DateTime dateTime = new DateTime(date);
         aTicker.setDate(dateTime);
-       return aTicker;
+        return aTicker;
     }
 
     @Override
@@ -109,7 +112,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         JsonNode node1 = node.path("query").path("results").path("quote");
         List<Ticker> tickers = new ArrayList<Ticker>();
         String date = node.findValue("created").asText();
-        DateTime dateTime = DateTime.parse(date, ISODateTimeFormat.dateTime());
+        DateTime dateTime = new DateTime(date);
         if (node1.isArray()) {
             for (final JsonNode objNode : node1) {
                 Ticker aTicker = objectMapper().readValue(objNode.toString(), Ticker.class);
@@ -165,7 +168,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         tickers.add(aTicker);
         return tickers;
     }
-
+/**
     @Override
     public List<AbstractTicker> historicalData(LondonExchangeSymbol tickerName, LocalDate startDate, LocalDate endDate) throws UnsupportedEncodingException, JsonParseException, JsonMappingException, IOException {
         requireUserAuthorization();
@@ -201,7 +204,7 @@ public class TickerTemplate extends AbstractYahooOperations implements TickerOpe
         tickers.add(aTicker);
         return tickers;
     }
-
+**/
     private ObjectMapper objectMapper(){
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = messageConverter.getObjectMapper();

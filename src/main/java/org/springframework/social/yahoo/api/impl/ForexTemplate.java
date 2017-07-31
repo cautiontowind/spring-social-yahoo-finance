@@ -58,7 +58,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
     }
 
     @Override
-    public List<Ticker> tickers(ForexName[] forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException {
+    public List<Ticker> forexes(ForexName[] forexNames) throws UnsupportedEncodingException,JsonParseException, JsonMappingException, IOException {
         requireUserAuthorization();
         MultiValueMap<String, String> request = new LinkedMultiValueMap<String, String>();
         request.set("env",UriUtils.encodePath("store://datatables.org/alltableswithkeys","UTF-8"));
@@ -94,7 +94,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         tickers.add(aTicker);
         return tickers;
     }
-
+/**
     @Override
     public List<AbstractTicker> historicalData(ForexName forexName, LocalDate startDate, LocalDate endDate) throws UnsupportedEncodingException, JsonParseException, JsonMappingException, IOException {
         requireUserAuthorization();
@@ -123,7 +123,7 @@ public class ForexTemplate extends AbstractYahooOperations implements ForexOpera
         tickers.add(aTicker);
         return tickers;
     }
-
+**/
     private ObjectMapper objectMapper(){
         MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = messageConverter.getObjectMapper();
